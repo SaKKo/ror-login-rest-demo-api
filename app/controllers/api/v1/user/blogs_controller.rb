@@ -13,6 +13,7 @@ class Api::V1::User::BlogsController < Api::V1::User::AppController
 
   def create
     blog = Blog.create!(params_for_create)
+    blog.user_id = current_user.id
     render json: blog.as_json, status: :created
   end
 
