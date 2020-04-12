@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       namespace :user do
         post "sign_in", to: "sessions#create"
         delete "sign_out", to: "sessions#destroy"
+        delete "me", to: "sessions#me"
         resources :blogs
       end
     end

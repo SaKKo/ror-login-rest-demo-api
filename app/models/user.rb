@@ -68,4 +68,13 @@ class User < ApplicationRecord
   def auth_jwt(duration = 15.days.from_now.to_i)
     ApiJwt.encrypt_jwt({ auth_token: self.auth_token }, Rails.application.credentials.user_jwt_secret, duration)
   end
+
+  def as_me_json
+    {
+      id: self.id,
+      first_name: self.first_name,
+      last_name: self.last_name,
+      email: self.email,
+    }
+  end
 end

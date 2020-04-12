@@ -18,4 +18,8 @@ class Api::V1::User::SessionsController < Api::V1::User::AppController
     current_user.generate_auth_token(true)
     render json: { success: true }
   end
+
+  def me
+    render json: current_user.as_me_json
+  end
 end
