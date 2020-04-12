@@ -1,7 +1,7 @@
 class Api::V1::User::AppController < Api::AppController
   before_action :set_current_user
 
-  def current_user
+  def current_user(check = false)
     @current_user
   end
 
