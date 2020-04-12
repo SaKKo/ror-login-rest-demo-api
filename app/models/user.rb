@@ -38,6 +38,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  validates :auth_token, presence: true, uniqueness: true
   before_validation :generate_auth_token, on: [:create]
 
   def generate_auth_token(force = false)

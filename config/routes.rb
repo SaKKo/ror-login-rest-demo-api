@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :user do
         post "sign_in", to: "sessions#create"
+        resources :blogs
       end
     end
   end
