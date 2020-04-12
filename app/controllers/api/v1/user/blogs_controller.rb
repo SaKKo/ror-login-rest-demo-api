@@ -3,7 +3,7 @@ class Api::V1::User::BlogsController < Api::V1::User::AppController
   before_action :set_blog, only: [:show, :update, :destroy]
 
   def index
-    blogs = Blog.last(30)
+    blogs = current_user.blogs
     render json: blogs.as_json
   end
 
@@ -31,11 +31,11 @@ class Api::V1::User::BlogsController < Api::V1::User::AppController
   private
 
   def check_current_user
-    current_user(true)
+    current_user
   end
 
   def set_blog
-    @blog = Blog.find(params[:id])
+    @blog = current_user.blogs.find(params[:id])
   end
 
   def params_for_create
