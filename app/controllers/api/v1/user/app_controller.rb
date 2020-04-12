@@ -1,7 +1,8 @@
 class Api::V1::User::AppController < Api::AppController
   before_action :set_current_user
 
-  def current_user(check = false)
+  def current_user(check = true)
+    raise GKAuthenticationError.new("Not logged in") if check && @current_user.blank?
     @current_user
   end
 

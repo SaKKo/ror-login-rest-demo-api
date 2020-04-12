@@ -1,4 +1,5 @@
 class Api::V1::User::BlogsController < Api::V1::User::AppController
+  before_action :check_current_user
   before_action :set_blog, only: [:show, :update, :destroy]
 
   def index
@@ -26,6 +27,10 @@ class Api::V1::User::BlogsController < Api::V1::User::AppController
   end
 
   private
+
+  def check_current_user
+    current_user(true)
+  end
 
   def set_blog
     @blog = Blog.find(params[:id])
