@@ -1,5 +1,5 @@
 class Api::V1::User::BlogsController < Api::V1::User::AppController
-  before_action :set_blog, only: [:show, :update, :delete]
+  before_action :set_blog, only: [:show, :update, :destroy]
 
   def index
     blogs = Blog.last(30)
@@ -17,10 +17,10 @@ class Api::V1::User::BlogsController < Api::V1::User::AppController
 
   def update
     @blog.update!(params_for_update)
-    render json: blog.as_json
+    render json: @blog.as_json
   end
 
-  def delete
+  def destroy
     @blog.destroy!
     render json: { succes: true }
   end

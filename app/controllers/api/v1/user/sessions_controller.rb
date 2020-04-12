@@ -13,4 +13,9 @@ class Api::V1::User::SessionsController < Api::V1::User::AppController
       raise GKAuthenticationError.new("Invalid Email or Password")
     end
   end
+
+  def destroy
+    @current_user.generate_auth_token(true)
+    render json: { success: true }
+  end
 end
