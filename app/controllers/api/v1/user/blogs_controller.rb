@@ -25,7 +25,7 @@ class Api::V1::User::BlogsController < Api::V1::User::AppController
 
   def destroy
     @blog.destroy!
-    render json: { succes: true }
+    render json: { success: true }
   end
 
   private
