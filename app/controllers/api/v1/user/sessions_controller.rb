@@ -20,6 +20,6 @@ class Api::V1::User::SessionsController < Api::V1::User::AppController
   end
 
   def me
-    render json: current_user.as_me_json
+    render json: { user: current_user.as_me_json }
   end
 end
